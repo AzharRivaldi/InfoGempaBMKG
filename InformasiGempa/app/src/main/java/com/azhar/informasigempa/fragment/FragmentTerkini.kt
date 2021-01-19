@@ -12,7 +12,6 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import com.azhar.informasigempa.R
 import com.azhar.informasigempa.networking.ApiEndpoint
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -20,7 +19,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.fragment_terkini.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.ParseException
@@ -57,7 +55,7 @@ class FragmentTerkini : Fragment(), OnMapReadyCallback {
 
         //show maps
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
+        mapFragment.getMapAsync(this)
     }
 
     private fun getDataGempaTerkini() {
@@ -75,8 +73,8 @@ class FragmentTerkini : Fragment(), OnMapReadyCallback {
                                 strPotensi = jsonObjectData.getString("potensi")
                                 strTanggal = jsonObjectData.getString("tanggal")
                                 strWaktu = jsonObjectData.getString("jam")
-                                strLat = jsonObjectData.getString("lintang").replace(" LU", "").replace(" LS", "")
-                                strLong = jsonObjectData.getString("bujur").replace(" BT", "")
+                                strLat = jsonObjectData.getString("lintang")
+                                strLong = jsonObjectData.getString("bujur")
                                 strSkala = jsonObjectData.getString("magnitude")
                                 strKedalaman = jsonObjectData.getString("kedalaman")
                                 strWilayah1 = jsonObjectData.getString("wilayah1")
@@ -95,7 +93,7 @@ class FragmentTerkini : Fragment(), OnMapReadyCallback {
                                     e.printStackTrace()
                                 }
 
-                                latitude = "-$strLat".toDouble()
+                                latitude = "$strLat".toDouble()
                                 longitude = strLong!!.toDouble()
 
                                 val latLng = LatLng(latitude, longitude)
