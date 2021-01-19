@@ -41,7 +41,7 @@ class AdapterBerpotensi(private val modelGempaBerpotensi:
             e.printStackTrace()
         }
 
-        val skalaPotensi = data.strMagnitude?.replace(" SR", "")?.toDouble()
+        val skalaPotensi = data.strMagnitude?
         val strPotensiTsunami: String
         strPotensiTsunami = if (skalaPotensi!! > 7.0) {
             "Berpotensi Tsunami"
