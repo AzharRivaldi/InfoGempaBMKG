@@ -72,8 +72,8 @@ class FragmentDetailGempa : BottomSheetDialogFragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        latitude = "-$strLat".toDouble()
-        longitude = strLong.toDouble()
+        latitude = "$strLat".toDouble()
+        longitude = strLong!!.toDouble()
 
         googleMaps = googleMap
 
